@@ -53,6 +53,7 @@ const register = dbQuery(async (req: Request, res: Response) => {
 
 	if (currentUser) {
 		throw new HttpError({
+			status: 403,
 			message: "User with that email already exists",
 			options: {
 				field: "email",

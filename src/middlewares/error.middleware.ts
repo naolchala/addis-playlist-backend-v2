@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import HttpError from "@utils/HttpError";
-import { NextFunction, Request, RequestHandler, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
 export const errorMiddleware = (error: Error, req: Request, res: Response) => {
 	if (error instanceof HttpError) {
@@ -12,11 +13,13 @@ export const errorMiddleware = (error: Error, req: Request, res: Response) => {
 };
 
 export const dbQuery =
-	(fn: RequestHandler) =>
+	(
+		fn: (
+			req: Request,
+			res: Response,
+			next: NextFunction
+		) => Promise<unknown>
+	) =>
 	(req: Request, res: Response, next: NextFunction) => {
-		try {
-			fn(req, res, next);
-		} catch (error) {
-			next(error);
-		}
+		fn(req, res, next).catch(next);
 	};

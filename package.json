@@ -5,7 +5,7 @@
   "type": "commonjs",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src/*.ts src/**/*.ts",
     "start": "node dist/index.js",
     "build": "tsc --build",
     "dev": "nodemon src/index.ts",
