@@ -1,8 +1,14 @@
 /* eslint-disable no-unused-vars */
+import { RequestWithUser } from "@/types/request.type";
 import HttpError from "@utils/HttpError";
 import { NextFunction, Request, Response } from "express";
 
-export const errorMiddleware = (error: Error, req: Request, res: Response) => {
+export const errorMiddleware = (
+	error: Error,
+	req: Request,
+	res: Response,
+	_next: NextFunction
+) => {
 	if (error instanceof HttpError) {
 		return res.status(error.status).json({
 			message: error.message,
@@ -15,11 +21,11 @@ export const errorMiddleware = (error: Error, req: Request, res: Response) => {
 export const dbQuery =
 	(
 		fn: (
-			req: Request,
+			req: Request | RequestWithUser,
 			res: Response,
 			next: NextFunction
-		) => Promise<unknown>
+		) => Promise<unknown | void>
 	) =>
-	(req: Request, res: Response, next: NextFunction) => {
+	(req: Request | RequestWithUser, res: Response, next: NextFunction) => {
 		fn(req, res, next).catch(next);
 	};

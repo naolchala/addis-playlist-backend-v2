@@ -1,4 +1,3 @@
-import { required } from "joi";
 import { Schema } from "mongoose";
 
 export interface IUser {

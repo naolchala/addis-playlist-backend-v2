@@ -18,6 +18,7 @@
 		"@typescript-eslint"
 	],
 	"rules": {
+		"arrow-body-style": 0,
 		"comma-dangle": 0,
 		"no-underscore-dangle": 0,
 		"no-param-reassign": 0,

@@ -1,5 +1,9 @@
-import { Request } from 'express';
+import { Express, Request } from "express";
 
 export interface RequestWithUser extends Request {
-	userId: string;
+	userId?: string;
+}
+
+export interface RequestWithFile extends RequestWithUser {
+	file?: Express.Multer.File;
 }

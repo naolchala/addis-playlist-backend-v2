@@ -1,7 +1,7 @@
 import { RequestWithUser } from "@/types/request.type";
 import { JWT_SECRET } from "@configs/env.config";
 import HttpError from "@utils/HttpError";
-import { NextFunction } from "express";
+import { NextFunction, Response } from "express";
 import * as jwt from "jsonwebtoken";
 
 const authenticate = (
