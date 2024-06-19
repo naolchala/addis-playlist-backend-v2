@@ -1,18 +1,7 @@
-import { Schema } from "mongoose";
-
-export type PlaylistVisibility = "PUBLIC" | "PRIVATE";
-
-export interface IPlaylist {
-	label: string;
-	desc?: string;
-	visibility: PlaylistVisibility;
-	playlistArtURL: string;
-	favorite: boolean;
-	userID: string;
-
-	createdAt: Date;
-	updatedAt: Date;
-}
+import mongoose, { Schema } from "mongoose";
+import * as statics from "./statics";
+import * as methods from "./methods";
+import { IPlaylist } from "./types";
 
 const PlaylistSchema = new Schema<IPlaylist>(
 	{
@@ -26,6 +15,10 @@ const PlaylistSchema = new Schema<IPlaylist>(
 		playlistArtURL: { type: String, required: true },
 		favorite: { type: Boolean, default: false },
 		userID: { type: String, required: true },
+		sharedTo: {
+			type: [mongoose.Types.ObjectId],
+			default: [],
+		},
 	},
 	{
 		timestamps: true,
@@ -37,5 +30,8 @@ const PlaylistSchema = new Schema<IPlaylist>(
 		},
 	}
 );
+
+PlaylistSchema.statics = statics;
+PlaylistSchema.methods = methods;
 
 export default PlaylistSchema;

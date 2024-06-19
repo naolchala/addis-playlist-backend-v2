@@ -1,15 +1,37 @@
 import authenticate from "@/middlewares/authenticate.middleware";
 import FileMiddlewares from "@/middlewares/file.middleware";
-import validateBody from "@/middlewares/validate.middleware";
+import validateBody, {
+	validateSearchQuery,
+} from "@/middlewares/validate.middleware";
 import PlaylistController from "@controllers/playlist.contoller";
-import { CreatePlaylistBodySchema } from "@validations/playlist.validation";
+import {
+	CreatePlaylistBodySchema,
+	EditPlaylistBodySchema,
+	SearchPlaylistQuerySchema,
+	SharePlaylistBodySchema,
+} from "@validations/playlist.validation";
 import { Router } from "express";
 
 const PlaylistRouter = Router();
+
 PlaylistRouter.use(authenticate);
-PlaylistRouter.get("/search", () => {});
-PlaylistRouter.get("/search-public", () => {});
-PlaylistRouter.get("/search-shared", () => {});
+
+PlaylistRouter.get(
+	"/search",
+	validateSearchQuery(SearchPlaylistQuerySchema),
+	PlaylistController.searchPlaylist
+);
+PlaylistRouter.get(
+	"/search-public",
+	validateSearchQuery(SearchPlaylistQuerySchema),
+	PlaylistController.searchPublicPlaylist
+);
+
+PlaylistRouter.get(
+	"/search-shared",
+	validateSearchQuery(SearchPlaylistQuerySchema),
+	PlaylistController.searchSharedPlaylist
+);
 
 PlaylistRouter.post(
 	"/",
@@ -17,10 +39,20 @@ PlaylistRouter.post(
 	validateBody(CreatePlaylistBodySchema),
 	PlaylistController.createPlaylist
 );
-PlaylistRouter.put("/:id", () => {});
-PlaylistRouter.delete("/:id", () => {});
 
-PlaylistRouter.post("/share", () => {});
-PlaylistRouter.get("/shared", () => {});
+PlaylistRouter.put(
+	"/:id",
+	validateBody(EditPlaylistBodySchema),
+	PlaylistController.updatePlaylist
+);
+
+PlaylistRouter.delete("/:id", PlaylistController.deletePlaylist);
+
+PlaylistRouter.post(
+	"/:id/share",
+	validateBody(SharePlaylistBodySchema),
+	PlaylistController.sharePlaylist
+);
+PlaylistRouter.get("/:id/shared-users", () => {});
 
 export default PlaylistRouter;

@@ -21,4 +21,23 @@ const validateBody =
 		next();
 	};
 
+export const validateSearchQuery =
+	(schema: Joi.Schema) =>
+	(req: Request, res: Response, next: NextFunction) => {
+		const { error } = schema.validate(req.query);
+		if (error) {
+			next(
+				new HttpError({
+					message: error.message,
+					status: 400,
+					options: {
+						field: error.details[0].path[0],
+					},
+				})
+			);
+		}
+
+		next();
+	};
+
 export default validateBody;

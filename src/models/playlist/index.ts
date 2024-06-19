@@ -1,7 +1,6 @@
-import mongoose, { Model } from "mongoose";
-import PlaylistSchema, { IPlaylist } from "./schema";
-
-interface PlaylistModel extends Model<IPlaylist> {}
+import mongoose from "mongoose";
+import PlaylistSchema from "./schema";
+import { IPlaylist, PlaylistModel } from "./types";
 
 const Playlist = mongoose.model<IPlaylist, PlaylistModel>(
 	"Playlist",
