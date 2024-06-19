@@ -1,10 +1,10 @@
 import { RequestWithUser } from "@/types/request.type";
 import { JWT_SECRET } from "@configs/env.config";
-import { HttpError } from "@utils/HttpError";
+import HttpError from "@utils/HttpError";
 import { NextFunction } from "express";
 import * as jwt from "jsonwebtoken";
 
-export const authenticate = (
+const authenticate = (
 	req: RequestWithUser,
 	res: Response,
 	next: NextFunction
@@ -21,7 +21,7 @@ export const authenticate = (
 		);
 	}
 
-	jwt.verify(token, JWT_SECRET, (err: any, id: any) => {
+	jwt.verify(token, JWT_SECRET, (err: unknown, id) => {
 		if (err) {
 			next(
 				new HttpError({
@@ -31,7 +31,9 @@ export const authenticate = (
 			);
 		}
 
-		req.userId = id;
+		req.userId = id as string;
 		next();
 	});
 };
+
+export default authenticate;

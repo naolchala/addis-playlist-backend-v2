@@ -1,8 +1,8 @@
-import { HttpError } from "@utils/HttpError";
+import HttpError from "@utils/HttpError";
 import { NextFunction, Request, Response } from "express";
 import Joi from "joi";
 
-export const validateBody =
+const validateBody =
 	(schema: Joi.Schema) =>
 	(req: Request, res: Response, next: NextFunction) => {
 		const { error } = schema.validate(req.body);
@@ -20,3 +20,5 @@ export const validateBody =
 
 		next();
 	};
+
+export default validateBody;

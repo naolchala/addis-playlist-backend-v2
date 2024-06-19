@@ -2,10 +2,10 @@ import { Router } from "express";
 
 const SongRouter = Router();
 
-SongRouter.post("/", (req, res) => {});
-SongRouter.get("/", (req, res) => {});
-SongRouter.get("/:id", (req, res) => {});
-SongRouter.put("/:id", (req, res) => {});
-SongRouter.delete("/:id", (req, res) => {});
+SongRouter.post("/", () => {});
+SongRouter.get("/", () => {});
+SongRouter.get("/:id", () => {});
+SongRouter.put("/:id", () => {});
+SongRouter.delete("/:id", () => {});
 
 export default SongRouter;

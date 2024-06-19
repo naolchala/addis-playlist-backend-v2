@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { DB_URL } from "./env.config";
 
-export const createDbConnection = async () => {
+const createDbConnection = async () => {
 	if (!DB_URL) {
 		throw new Error("DB_URL is not defined");
 	}
@@ -13,3 +13,5 @@ export const createDbConnection = async () => {
 		console.log(error);
 	}
 };
+
+export default createDbConnection;

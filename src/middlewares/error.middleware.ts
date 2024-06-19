@@ -1,12 +1,7 @@
-import { HttpError } from "@utils/HttpError";
-import { NextFunction, Request, Response, Router } from "express";
+import HttpError from "@utils/HttpError";
+import { NextFunction, Request, RequestHandler, Response } from "express";
 
-export const errorMiddleware = (
-	error: Error,
-	req: Request,
-	res: Response,
-	next: NextFunction
-) => {
+export const errorMiddleware = (error: Error, req: Request, res: Response) => {
 	if (error instanceof HttpError) {
 		return res.status(error.status).json({
 			message: error.message,
@@ -17,7 +12,11 @@ export const errorMiddleware = (
 };
 
 export const dbQuery =
-	(fn: (req: Request, res: Response, next: NextFunction) => Promise<any>) =>
+	(fn: RequestHandler) =>
 	(req: Request, res: Response, next: NextFunction) => {
-		fn(req, res, next).catch(next);
+		try {
+			fn(req, res, next);
+		} catch (error) {
+			next(error);
+		}
 	};

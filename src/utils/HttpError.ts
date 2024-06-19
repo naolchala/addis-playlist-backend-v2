@@ -1,6 +1,8 @@
-export class HttpError extends Error {
+class HttpError extends Error {
 	public status: number;
-	public options: any;
+
+	public options?: { [key: string]: unknown };
+
 	constructor({
 		status,
 		message,
@@ -8,10 +10,12 @@ export class HttpError extends Error {
 	}: {
 		status?: number;
 		message: string;
-		options?: any;
+		options?: { [key: string]: unknown };
 	}) {
 		super(message);
 		this.status = status ?? 500;
 		this.options = options;
 	}
 }
+
+export default HttpError;
