@@ -6,7 +6,7 @@ import {
 } from "@validations/user.validators";
 import { NextFunction, Request, Response } from "express";
 import * as bcrypt from "bcrypt";
-import { HttpError, dbQuery } from "@utils/error.middleware";
+import { HttpError, dbQuery } from "@/middlewares/error.middleware";
 import _ from "lodash";
 import { generateUserToken } from "@utils/auth.utils";
 

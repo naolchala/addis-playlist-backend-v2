@@ -3,7 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
 import router from "./routes";
-import { errorMiddleware } from "@utils/error.middleware";
+import { errorMiddleware } from "@/middlewares/error.middleware";
 
 const app = express();
 app.use(cors());

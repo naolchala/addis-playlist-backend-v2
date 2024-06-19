@@ -1,4 +1,4 @@
-import { HttpError } from "@utils/error.middleware";
+import { HttpError } from "@utils/HttpError";
 import { NextFunction, Request, Response } from "express";
 import Joi from "joi";
 
