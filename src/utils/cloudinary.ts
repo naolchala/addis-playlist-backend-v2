@@ -2,11 +2,12 @@ import cloudinary from "cloudinary";
 import DataURIParser from "datauri/parser";
 import path from "path";
 import { Express } from "express";
+import ENV from "@configs/env.config";
 
 cloudinary.v2.config({
-	cloud_name: process.env.CLOUDINARY_NAME,
-	api_key: process.env.CLOUDINARY_API_KEY,
-	api_secret: process.env.CLOUDINARY_API_SECRET,
+	cloud_name: ENV.CLOUDINARY_NAME,
+	api_key: ENV.CLOUDINARY_API_KEY,
+	api_secret: ENV.CLOUDINARY_API_SECRET,
 });
 
 const parser = new DataURIParser();

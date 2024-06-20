@@ -1,5 +1,5 @@
 import { RequestWithUser } from "@/types/request.type";
-import { JWT_SECRET } from "@configs/env.config";
+import ENV from "@configs/env.config";
 import HttpError from "@utils/HttpError";
 import { NextFunction, Response } from "express";
 import * as jwt from "jsonwebtoken";
@@ -21,7 +21,7 @@ const authenticate = (
 		);
 	}
 
-	jwt.verify(token, JWT_SECRET, (err: unknown, id) => {
+	jwt.verify(token, ENV.AUTH_SECRET, (err: unknown, id) => {
 		if (err) {
 			next(
 				new HttpError({

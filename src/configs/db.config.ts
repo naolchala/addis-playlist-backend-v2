@@ -1,13 +1,11 @@
 import mongoose from "mongoose";
-import { DB_URL } from "./env.config";
+import ENV from "./env.config";
 
 const createDbConnection = async () => {
-	if (!DB_URL) {
-		throw new Error("DB_URL is not defined");
-	}
-
 	try {
-		await mongoose.connect(DB_URL).then(() => console.log("DB connected"));
+		await mongoose
+			.connect(ENV.DB_URL)
+			.then(() => console.log("DB connected"));
 	} catch (error) {
 		console.log("Could not connect to DB");
 		console.log(error);
