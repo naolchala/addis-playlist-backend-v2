@@ -1,5 +1,29 @@
 import { Model } from "mongoose";
+import HttpError from "@utils/HttpError";
 import { IPlaylist, SearchPlaylistStaticParams } from "./types";
+
+export async function findByIdOrThrow(
+	this: Model<IPlaylist>,
+	id: string,
+	userID: string
+) {
+	const playlist = await this.findById(id);
+	if (!playlist) {
+		throw new HttpError({
+			status: 404,
+			message: "Playlist not found",
+		});
+	}
+
+	if (playlist.userID !== userID) {
+		throw new HttpError({
+			status: 403,
+			message: "You are not allowed to access this playlist",
+		});
+	}
+
+	return playlist;
+}
 
 export async function search(
 	this: Model<IPlaylist>,

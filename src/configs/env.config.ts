@@ -2,14 +2,14 @@ import envSchema, { IEnv } from "@validations/env.validation";
 import dotenv from "dotenv";
 
 const loadEnvironment = () => {
-	console.log("Loading env");
 	dotenv.config();
 	const environment = process.env;
 
-	const { error, value } = envSchema.validate(environment);
+	const { error, value } = envSchema.validate(environment, {
+		allowUnknown: true,
+	});
 
 	if (error) {
-		console.error(error);
 		throw new Error(
 			`Environment Validation Error: ${error.details[0].path}, ${error.details[0].message}`
 		);

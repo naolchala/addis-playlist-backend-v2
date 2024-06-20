@@ -22,6 +22,13 @@ const PlaylistSchema = new Schema<IPlaylist>(
 				default: [],
 			},
 		],
+		songs: [
+			{
+				type: Schema.ObjectId,
+				ref: "Song",
+				default: [],
+			},
+		],
 	},
 	{
 		timestamps: true,

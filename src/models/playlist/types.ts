@@ -18,6 +18,7 @@ export interface IPlaylist {
 	favorite: boolean;
 	userID: string;
 	sharedTo: Types.ObjectId[];
+	songs: Types.ObjectId[];
 
 	createdAt: Date;
 	updatedAt: Date;
@@ -28,6 +29,11 @@ export interface IPlaylistMethods {
 }
 
 export interface PlaylistModel extends Model<IPlaylist, {}, IPlaylistMethods> {
+	findByIdOrThrow: (
+		this: Model<IPlaylist>,
+		id: string,
+		userID: string
+	) => Promise<HydratedDocument<IPlaylist>>;
 	search: (
 		params: SearchPlaylistStaticParams
 	) => Promise<HydratedDocument<IPlaylist>[]>;
