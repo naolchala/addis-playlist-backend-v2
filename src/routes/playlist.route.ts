@@ -53,6 +53,6 @@ PlaylistRouter.post(
 	validateBody(SharePlaylistBodySchema),
 	PlaylistController.sharePlaylist
 );
-PlaylistRouter.get("/:id/shared-users", () => {});
+PlaylistRouter.get("/:id/shared-users", PlaylistController.sharedUsers);
 
 export default PlaylistRouter;

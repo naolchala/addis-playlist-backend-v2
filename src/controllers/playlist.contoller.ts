@@ -158,6 +158,21 @@ const sharePlaylist = dbQuery(async (req: RequestWithUser, res: Response) => {
 	return res.json(sharedUser);
 });
 
+const sharedUsers = dbQuery(async (req, res, next) => {
+	const { id } = req.params;
+	const playlist = await Playlist.findById(id)
+		.populate("sharedTo", "id firstName lastName email photoURL")
+		.exec();
+
+	if (!playlist) {
+		return next(
+			new HttpError({ status: 404, message: "Playlist not found" })
+		);
+	}
+
+	return res.json(playlist.sharedTo);
+});
+
 const PlaylistController = {
 	createPlaylist,
 	updatePlaylist,
@@ -166,6 +181,7 @@ const PlaylistController = {
 	searchPublicPlaylist,
 	searchSharedPlaylist,
 	sharePlaylist,
+	sharedUsers,
 };
 
 export default PlaylistController;

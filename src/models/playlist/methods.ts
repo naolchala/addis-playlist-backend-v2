@@ -4,7 +4,8 @@ import HttpError from "@utils/HttpError";
 import _ from "lodash";
 import { IPlaylist } from "./types";
 
-export default async function share(
+// eslint-disable-next-line import/prefer-default-export
+export async function share(
 	this: Document<unknown, {}, FlatRecord<IPlaylist>> & FlatRecord<IPlaylist>,
 	email: string
 ) {
@@ -19,6 +20,20 @@ export default async function share(
 		throw new HttpError({
 			status: 404,
 			message: "User not found",
+		});
+	}
+
+	if (user.id === this.userID) {
+		throw new HttpError({
+			status: 403,
+			message: "You can't share playlist to yourself",
+		});
+	}
+
+	if (this.sharedTo.includes(user.id)) {
+		throw new HttpError({
+			status: 400,
+			message: "Playlist already shared to this user",
 		});
 	}
 
