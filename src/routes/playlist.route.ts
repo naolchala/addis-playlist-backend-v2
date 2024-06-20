@@ -3,7 +3,7 @@ import FileMiddlewares from "@/middlewares/file.middleware";
 import validateBody, {
 	validateSearchQuery,
 } from "@/middlewares/validate.middleware";
-import PlaylistController from "@controllers/playlist.contoller";
+import PlaylistController from "@controllers/playlist.controller";
 import {
 	CreatePlaylistBodySchema,
 	EditPlaylistBodySchema,
