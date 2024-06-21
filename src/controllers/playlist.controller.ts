@@ -10,6 +10,8 @@ import {
 	SearchPlaylistQuery,
 	SharePlaylistBody,
 } from "@validations/playlist.validation";
+import accessControl, { isUserPlaylistOwner } from "@utils/accesscontrol";
+import { PLAYLIST, SHARE_PLAYLIST } from "@utils/resources";
 
 const createPlaylist = dbQuery(
 	async (req: RequestWithFile, res: Response, _next: NextFunction) => {
@@ -50,7 +52,11 @@ const updatePlaylist = dbQuery(async (req: RequestWithUser, res: Response) => {
 		});
 	}
 
-	if (playlist?.userID !== userId) {
+	const permission = isUserPlaylistOwner(userId ?? "-", playlist)
+		? accessControl.can("user").updateOwn(PLAYLIST)
+		: accessControl.can("user").updateAny(PLAYLIST);
+
+	if (!permission.granted) {
 		throw new HttpError({
 			status: 403,
 			message: "You are not allowed to edit this playlist",
@@ -134,7 +140,7 @@ const searchSharedPlaylist = dbQuery(
 
 const sharePlaylist = dbQuery(async (req: RequestWithUser, res: Response) => {
 	const { id } = req.params;
-	const { userId } = req;
+	const { userId } = req as { userId: string };
 	const { email } = req.body as SharePlaylistBody;
 
 	const playlist = await Playlist.findById(id);
@@ -146,7 +152,11 @@ const sharePlaylist = dbQuery(async (req: RequestWithUser, res: Response) => {
 		});
 	}
 
-	if (playlist?.userID !== userId) {
+	const permission = isUserPlaylistOwner(userId, playlist)
+		? accessControl.can("user").createOwn(SHARE_PLAYLIST)
+		: accessControl.can("user").createAny(SHARE_PLAYLIST);
+
+	if (!permission.granted) {
 		throw new HttpError({
 			status: 403,
 			message: "You are not allowed to share this playlist",

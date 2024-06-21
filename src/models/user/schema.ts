@@ -1,3 +1,4 @@
+import { Roles } from "@utils/resources";
 import { Schema } from "mongoose";
 
 export interface IUser {
@@ -29,6 +30,11 @@ const userSchema = new Schema(
 		photoURL: {
 			type: String,
 			required: false,
+		},
+		role: {
+			type: String,
+			enum: Object.keys(Roles),
+			default: Roles.USER,
 		},
 	},
 	{

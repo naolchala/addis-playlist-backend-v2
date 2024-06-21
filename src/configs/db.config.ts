@@ -1,14 +1,15 @@
 import mongoose from "mongoose";
+import logger from "@utils/logger";
 import ENV from "./env.config";
 
 const createDbConnection = async () => {
 	try {
 		await mongoose
 			.connect(ENV.DB_URL)
-			.then(() => console.log("DB connected"));
+			.then(() => logger.info("DB connected"));
 	} catch (error) {
-		console.log("Could not connect to DB");
-		console.log(error);
+		logger.error("Could not connect to DB");
+		logger.error(error);
 	}
 };
 
