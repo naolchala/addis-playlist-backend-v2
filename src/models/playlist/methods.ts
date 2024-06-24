@@ -1,8 +1,8 @@
-import User from "@models/user";
+import User from "@models/user/index.js";
 import { Document, FlatRecord } from "mongoose";
-import HttpError from "@utils/HttpError";
+import HttpError from "@utils/HttpError.js";
 import _ from "lodash";
-import { IPlaylist } from "./types";
+import { IPlaylist } from "./types.js";
 
 // eslint-disable-next-line import/prefer-default-export
 export async function share(

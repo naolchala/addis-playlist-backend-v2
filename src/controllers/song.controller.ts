@@ -1,9 +1,12 @@
-import { dbQuery } from "@/middlewares/error.middleware";
-import { RequestWithUser } from "@/types/request.type";
-import Playlist from "@models/playlist";
-import Song from "@models/song";
-import HttpError from "@utils/HttpError";
-import { CreateSongBody, UpdateSongBody } from "@validations/song.validation";
+import { dbQuery } from "@/middlewares/error.middleware.js";
+import { RequestWithUser } from "@/types/request.type.js";
+import Playlist from "@models/playlist/index.js";
+import Song from "@models/song/index.js";
+import HttpError from "@utils/HttpError.js";
+import {
+	CreateSongBody,
+	UpdateSongBody,
+} from "@validations/song.validation.js";
 import { NextFunction, Response } from "express";
 
 const createSong = dbQuery(async (req: RequestWithUser, res: Response) => {

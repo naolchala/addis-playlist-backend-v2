@@ -1,11 +1,14 @@
-import User from "@models/user";
-import { UserLoginBody, UserRegisterBody } from "@validations/user.validators";
+import User from "@models/user/index.js";
+import {
+	UserLoginBody,
+	UserRegisterBody,
+} from "@validations/user.validators.js";
 import { Request, Response } from "express";
 import * as bcrypt from "bcrypt";
-import { dbQuery } from "@/middlewares/error.middleware";
+import { dbQuery } from "@/middlewares/error.middleware.js";
 import _ from "lodash";
-import HttpError from "@utils/HttpError";
-import AuthUtils from "@utils/auth.utils";
+import HttpError from "@utils/HttpError.js";
+import AuthUtils from "@utils/auth.utils.js";
 
 const login = dbQuery(async (req: Request, res: Response) => {
 	const { email, password } = req.body as UserLoginBody;

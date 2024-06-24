@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
-import { RequestWithUser } from "@/types/request.type";
-import HttpError from "@utils/HttpError";
+import { RequestWithUser } from "@/types/request.type.js";
+import HttpError from "@utils/HttpError.js";
 import { NextFunction, Request, Response } from "express";
 
 export const errorMiddleware = (

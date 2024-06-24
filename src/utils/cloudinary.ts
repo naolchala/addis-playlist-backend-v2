@@ -1,8 +1,8 @@
 import cloudinary from "cloudinary";
-import DataURIParser from "datauri/parser";
+import DataURIParser from "datauri/parser.js";
 import path from "path";
 import { Express } from "express";
-import ENV from "@configs/env.config";
+import ENV from "@configs/env.config.js";
 
 cloudinary.v2.config({
 	cloud_name: ENV.CLOUDINARY_NAME,

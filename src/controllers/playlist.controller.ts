@@ -1,17 +1,17 @@
 import { NextFunction, Response } from "express";
-import { dbQuery } from "@/middlewares/error.middleware";
-import { RequestWithFile, RequestWithUser } from "@/types/request.type";
-import Playlist from "@models/playlist";
-import HttpError from "@utils/HttpError";
-import { uploadImage } from "@utils/cloudinary";
+import { dbQuery } from "@/middlewares/error.middleware.js";
+import { RequestWithFile, RequestWithUser } from "@/types/request.type.js";
+import Playlist from "@models/playlist/index.js";
+import HttpError from "@utils/HttpError.js";
+import { uploadImage } from "@utils/cloudinary.js";
 import {
 	CreatePlaylistBody,
 	EditPlaylistBody,
 	SearchPlaylistQuery,
 	SharePlaylistBody,
-} from "@validations/playlist.validation";
-import accessControl, { isUserPlaylistOwner } from "@utils/accesscontrol";
-import { PLAYLIST, SHARE_PLAYLIST } from "@utils/resources";
+} from "@validations/playlist.validation.js";
+import accessControl, { isUserPlaylistOwner } from "@utils/accesscontrol.js";
+import { PLAYLIST, SHARE_PLAYLIST } from "@utils/resources.js";
 
 const createPlaylist = dbQuery(
 	async (req: RequestWithFile, res: Response, _next: NextFunction) => {

@@ -1,5 +1,5 @@
 import mongoose, { Model } from "mongoose";
-import userSchema, { IUser } from "./schema";
+import userSchema, { IUser } from "./schema.js";
 
 export interface UserModel extends Model<IUser> {}
 

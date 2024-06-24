@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { SearchPlaylistQuery } from "@validations/playlist.validation";
-import { IUser } from "@models/user/schema";
+import { SearchPlaylistQuery } from "@validations/playlist.validation.js";
+import { IUser } from "@models/user/schema.js";
 import { HydratedDocument, Model, Types } from "mongoose";
 
 export type PlaylistVisibility = "PUBLIC" | "PRIVATE";
@@ -16,7 +16,7 @@ export interface IPlaylist {
 	visibility: PlaylistVisibility;
 	playlistArtURL: string;
 	favorite: boolean;
-	userID: string;
+	userID: Types.ObjectId;
 	sharedTo: Types.ObjectId[];
 	songs: Types.ObjectId[];
 

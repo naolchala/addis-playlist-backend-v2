@@ -1,4 +1,4 @@
-import { Roles } from "@utils/resources";
+import { Roles } from "@utils/resources.js";
 import { Schema } from "mongoose";
 
 export interface IUser {
@@ -41,7 +41,7 @@ const userSchema = new Schema(
 		toJSON: {
 			transform: (doc, ret) => {
 				ret.id = ret._id;
-				delete ret._id;
+				// delete ret._id;
 				delete ret.__v;
 				delete ret.password;
 			},
@@ -51,7 +51,7 @@ const userSchema = new Schema(
 			virtuals: true,
 			transform: (doc, ret) => {
 				ret.id = ret._id;
-				delete ret._id;
+				// delete ret._id;
 				delete ret.__v;
 				delete ret.password;
 			},

@@ -1,15 +1,15 @@
-import authenticate from "@/middlewares/authenticate.middleware";
-import FileMiddlewares from "@/middlewares/file.middleware";
+import authenticate from "@/middlewares/authenticate.middleware.js";
+import FileMiddlewares from "@/middlewares/file.middleware.js";
 import validateBody, {
 	validateSearchQuery,
-} from "@/middlewares/validate.middleware";
-import PlaylistController from "@controllers/playlist.controller";
+} from "@/middlewares/validate.middleware.js";
+import PlaylistController from "@controllers/playlist.controller.js";
 import {
 	CreatePlaylistBodySchema,
 	EditPlaylistBodySchema,
 	SearchPlaylistQuerySchema,
 	SharePlaylistBodySchema,
-} from "@validations/playlist.validation";
+} from "@validations/playlist.validation.js";
 import { Router } from "express";
 
 const PlaylistRouter = Router();

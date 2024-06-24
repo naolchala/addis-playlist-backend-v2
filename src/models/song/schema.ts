@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { ISong } from "./types";
+import { ISong } from "./types.js";
 
 const songSchema = new Schema<ISong>(
 	{

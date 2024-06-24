@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import logger from "@utils/logger";
-import ENV from "./env.config";
+import logger from "@utils/logger.js";
+import ENV from "./env.config.js";
 
 const createDbConnection = async () => {
 	try {

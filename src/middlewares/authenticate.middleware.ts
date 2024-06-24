@@ -1,6 +1,6 @@
-import { RequestWithUser } from "@/types/request.type";
-import ENV from "@configs/env.config";
-import HttpError from "@utils/HttpError";
+import { RequestWithUser } from "@/types/request.type.js";
+import ENV from "@configs/env.config.js";
+import HttpError from "@utils/HttpError.js";
 import { NextFunction, Response } from "express";
 import * as jwt from "jsonwebtoken";
 

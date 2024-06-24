@@ -1,10 +1,10 @@
-import UserController from "@controllers/user.controller";
+import UserController from "@controllers/user.controller.js";
 import {
 	loginValidator,
 	registerValidator,
-} from "@validations/user.validators";
+} from "@validations/user.validators.js";
 import { Router } from "express";
-import validateBody from "@/middlewares/validate.middleware";
+import validateBody from "@/middlewares/validate.middleware.js";
 
 const UserRouter = Router();
 

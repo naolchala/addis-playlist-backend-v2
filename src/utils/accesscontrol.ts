@@ -1,7 +1,7 @@
-import { IPlaylist } from "@models/playlist/types";
+import { IPlaylist } from "@models/playlist/types.js";
 import { AccessControl } from "accesscontrol";
 import { HydratedDocument, Types } from "mongoose";
-import { PLAYLIST, SHARE_PLAYLIST } from "./resources";
+import { PLAYLIST, SHARE_PLAYLIST } from "./resources.js";
 
 const accessControl = new AccessControl();
 

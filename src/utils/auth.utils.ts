@@ -1,4 +1,4 @@
-import ENV from "@configs/env.config";
+import ENV from "@configs/env.config.js";
 import * as jwt from "jsonwebtoken";
 
 const generateUserToken = (id: string) => {

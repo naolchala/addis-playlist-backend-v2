@@ -1,6 +1,6 @@
 import { Model } from "mongoose";
-import HttpError from "@utils/HttpError";
-import { IPlaylist, SearchPlaylistStaticParams } from "./types";
+import HttpError from "@utils/HttpError.js";
+import { IPlaylist, SearchPlaylistStaticParams } from "./types.js";
 
 export async function findByIdOrThrow(
 	this: Model<IPlaylist>,

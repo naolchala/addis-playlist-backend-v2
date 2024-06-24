@@ -1,7 +1,7 @@
 import { Schema } from "mongoose";
-import * as statics from "./statics";
-import * as methods from "./methods";
-import { IPlaylist } from "./types";
+import * as statics from "./statics.js";
+import * as methods from "./methods.js";
+import { IPlaylist } from "./types.js";
 
 const PlaylistSchema = new Schema<IPlaylist>(
 	{
@@ -14,17 +14,17 @@ const PlaylistSchema = new Schema<IPlaylist>(
 		},
 		playlistArtURL: { type: String, required: true },
 		favorite: { type: Boolean, default: false },
-		userID: { type: String, required: true },
+		userID: { type: Schema.Types.ObjectId, ref: "User", required: true },
 		sharedTo: [
 			{
-				type: Schema.ObjectId,
+				type: Schema.Types.ObjectId,
 				ref: "User",
 				default: [],
 			},
 		],
 		songs: [
 			{
-				type: Schema.ObjectId,
+				type: Schema.Types.ObjectId,
 				ref: "Song",
 				default: [],
 			},

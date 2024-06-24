@@ -1,5 +1,5 @@
-import { IPlaylist } from "@models/playlist/types";
-import { CreateSongBody } from "@validations/song.validation";
+import { IPlaylist } from "@models/playlist/types.js";
+import { CreateSongBody } from "@validations/song.validation.js";
 import { Types, Model, HydratedDocument } from "mongoose";
 
 export interface ISong {

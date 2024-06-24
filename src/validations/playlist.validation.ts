@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import { PlaylistVisibility } from "@models/playlist/types";
+import { PlaylistVisibility } from "@models/playlist/types.js";
 import Joi from "joi";
 
 export interface CreatePlaylistBody {

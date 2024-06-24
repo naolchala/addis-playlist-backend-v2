@@ -1,10 +1,10 @@
-import authenticate from "@/middlewares/authenticate.middleware";
-import validateBody from "@/middlewares/validate.middleware";
-import SongController from "@controllers/song.controller";
+import authenticate from "@/middlewares/authenticate.middleware.js";
+import validateBody from "@/middlewares/validate.middleware.js";
+import SongController from "@controllers/song.controller.js";
 import {
 	createSongSchema,
 	updateSongSchema,
-} from "@validations/song.validation";
+} from "@validations/song.validation.js";
 import { Router } from "express";
 
 const SongRouter = Router();

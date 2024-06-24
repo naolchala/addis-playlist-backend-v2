@@ -1,8 +1,8 @@
 import { HydratedDocument, Model } from "mongoose";
-import { CreateSongBody } from "@validations/song.validation";
-import { IPlaylist } from "@models/playlist/types";
-import { ISong } from "./types";
-import Song from ".";
+import { CreateSongBody } from "@validations/song.validation.js";
+import { IPlaylist } from "@models/playlist/types.js";
+import { ISong } from "./types.js";
+import Song from "./index.js";
 
 // eslint-disable-next-line import/prefer-default-export
 export async function createSong(

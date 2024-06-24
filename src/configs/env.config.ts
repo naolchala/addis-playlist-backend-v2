@@ -1,4 +1,4 @@
-import envSchema, { IEnv } from "@validations/env.validation";
+import envSchema, { IEnv } from "@validations/env.validation.js";
 import dotenv from "dotenv";
 
 const loadEnvironment = () => {

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import PlaylistSchema from "./schema";
-import { IPlaylist, PlaylistModel } from "./types";
+import PlaylistSchema from "./schema.js";
+import { IPlaylist, PlaylistModel } from "./types.js";
 
 const Playlist = mongoose.model<IPlaylist, PlaylistModel>(
 	"Playlist",

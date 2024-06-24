@@ -3,12 +3,13 @@
 		"outDir": "dist",
 		"sourceMap": true,
 		"target": "esnext",
-		"module": "CommonJS",
+		"module": "NodeNext",
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitAny": true,
 		"strict": true,
 		"skipLibCheck": true,
+		"jsx": "react",
 		"paths": {
 			"@routes/*": [
 				"./src/routes/*"
@@ -35,6 +36,7 @@
 	},
 	"include": [
 		"src/**/*.ts",
+		"src/**/*.tsx",
 		"test/**/*.ts"
 	],
 	"ts-node": {

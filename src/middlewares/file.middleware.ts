@@ -1,4 +1,4 @@
-import HttpError from "@utils/HttpError";
+import HttpError from "@utils/HttpError.js";
 import multer, { memoryStorage } from "multer";
 
 const imageUpload = multer({
