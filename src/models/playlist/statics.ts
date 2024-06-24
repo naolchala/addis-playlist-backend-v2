@@ -85,5 +85,10 @@ export async function getPublicPlaylists(
 
 // export async function getSharedPlaylists(
 // 	this: Model<IPlaylist>,
-// 	// params: SearchPlaylistStaticParams
-// ) {}
+// 	params: SearchPlaylistStaticParams
+// ) {
+// 	const { filters, userId } = params;
+// 	const queryBuilder = this.find({
+// 		sharedTo:
+// 	});
+// }

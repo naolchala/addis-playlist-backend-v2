@@ -152,9 +152,11 @@ const sharePlaylist = dbQuery(async (req: RequestWithUser, res: Response) => {
 		});
 	}
 
-	const permission = isUserPlaylistOwner(userId, playlist)
-		? accessControl.can("user").createOwn(SHARE_PLAYLIST)
-		: accessControl.can("user").createAny(SHARE_PLAYLIST);
+	let permission = accessControl.can("user").createAny(SHARE_PLAYLIST);
+
+	if (!permission.granted && isUserPlaylistOwner(userId, playlist)) {
+		permission = accessControl.can("user").createOwn(SHARE_PLAYLIST);
+	}
 
 	if (!permission.granted) {
 		throw new HttpError({

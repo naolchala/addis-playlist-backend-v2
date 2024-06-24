@@ -68,7 +68,9 @@ const register = dbQuery(async (req: Request, res: Response) => {
 	});
 
 	await user.save();
-	return res.json(_.omit(user.toObject(), "password"));
+	const token = AuthUtils.generateUserToken(user.id);
+
+	return res.json({ ...user.toObject(), token });
 });
 
 const UserController = {
